@@ -8,9 +8,13 @@ class PostsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @post.update(post_params)
-
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render 'edit'
+    end
   end
 
   private
